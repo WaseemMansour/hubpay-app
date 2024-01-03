@@ -19,7 +19,12 @@ describe('International Payment Screen', () => {
 	})
 	
 	it('Should have TO Currency Input', () => {
-		const fromCurrencyInput = getByTestId('to-currency-input');
-		expect(fromCurrencyInput).toBeDefined()
+		const toCurrencyInput = getByTestId('to-currency-input');
+		expect(toCurrencyInput).toBeDefined()
+	})
+	
+	it('Should show Conversion Rate + Fees', () => {
+		const conversionRateFees = getByTestId('conversion-rate-and-fees');
+		expect(conversionRateFees).toBeDefined()
 	})
 })

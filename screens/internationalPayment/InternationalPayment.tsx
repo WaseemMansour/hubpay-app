@@ -10,6 +10,9 @@ export const InternationalPayment = () => {
 			<View testID='to-currency-input'>
 				<Text>To Currency Input</Text>
 			</View>
+			<View testID='conversion-rate-and-fees'>
+				<Text>Conversion Rate + Fees</Text>
+			</View>
 		</View>
 	)
 }

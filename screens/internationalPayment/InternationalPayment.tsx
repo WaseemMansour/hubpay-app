@@ -13,6 +13,12 @@ export const InternationalPayment = () => {
 			<View testID='conversion-rate-and-fees'>
 				<Text>Conversion Rate + Fees</Text>
 			</View>
+			<View testID='processing-disclaimer'>
+				<Text>Conversion Rate + Fees</Text>
+			</View>
+			<View testID='start-transfer-cta'>
+				<Text>Conversion Rate + Fees</Text>
+			</View>
 		</View>
 	)
 }

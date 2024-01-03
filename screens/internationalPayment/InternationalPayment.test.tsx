@@ -15,16 +15,26 @@ describe('International Payment Screen', () => {
 	
 	it('Should have FROM Currency Input', () => {
 		const fromCurrencyInput = getByTestId('from-currency-input');
-		expect(fromCurrencyInput).toBeDefined()
+		expect(fromCurrencyInput).toBeDefined();
 	})
 	
 	it('Should have TO Currency Input', () => {
 		const toCurrencyInput = getByTestId('to-currency-input');
-		expect(toCurrencyInput).toBeDefined()
+		expect(toCurrencyInput).toBeDefined();
 	})
 	
 	it('Should show Conversion Rate + Fees', () => {
 		const conversionRateFees = getByTestId('conversion-rate-and-fees');
-		expect(conversionRateFees).toBeDefined()
+		expect(conversionRateFees).toBeDefined();
+	})
+	
+	it('Should show Processing Disclaimer', () => {
+		const processingDisclaimer = getByTestId('processing-disclaimer');
+		expect(processingDisclaimer).toBeDefined();
+	})
+	
+	it('Should show Start Transfer CTA', () => {
+		const startTransferCTA = getByTestId('start-transfer-cta');
+		expect(startTransferCTA).toBeDefined();
 	})
 })

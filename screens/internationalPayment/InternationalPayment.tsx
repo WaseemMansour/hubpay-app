@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, View} from "react-native";
+import {Button, Text, View} from "react-native";
 
 export const InternationalPayment = () => {
 	return (
@@ -14,10 +14,10 @@ export const InternationalPayment = () => {
 				<Text>Conversion Rate + Fees</Text>
 			</View>
 			<View testID='processing-disclaimer'>
-				<Text>Conversion Rate + Fees</Text>
+				<Text>Processing Disclaimer</Text>
 			</View>
 			<View testID='start-transfer-cta'>
-				<Text>Conversion Rate + Fees</Text>
+				<Button title='Start Transfer' />
 			</View>
 		</View>
 	)

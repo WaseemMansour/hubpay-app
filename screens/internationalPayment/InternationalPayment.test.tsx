@@ -10,4 +10,10 @@ describe('International Payment Screen', () => {
 		const fromCurrencyInput = getByTestId('from-currency-input');
 		expect(fromCurrencyInput).toBeDefined()
 	})
+	
+	it('Should have TO Currency Input', () => {
+		const { getByTestId } = render(<InternationalPayment />);
+		const fromCurrencyInput = getByTestId('to-currency-input');
+		expect(fromCurrencyInput).toBeDefined()
+	})
 })

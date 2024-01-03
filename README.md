@@ -15,7 +15,7 @@
 - [ ] Should have TO currency Input
 - [ ] Should Show Conversion Rate + Fees
 - [ ] Should Show Processing Disclaimer
-- [ ] Should have Strat Transfer CTA
+- [ ] Should have " Start Transfer " CTA
 - [ ] Should update TO Currency Input when FROM Value Change
 - [ ] Should update FROM Currency Input when TO value change.
 

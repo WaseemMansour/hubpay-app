@@ -1,11 +1,12 @@
-import React from 'react'
-import {Button, Text, View} from "react-native";
+import React from 'react';
+import { Button, Text, View } from "react-native";
+import { CurrencyInput } from '../../components/CurrencyInput/CurrencyInput';
 
 export const InternationalPayment = () => {
 	return (
 		<View>
 			<View testID='from-currency-input'>
-				<Text>From Currency Input</Text>
+				<CurrencyInput />
 			</View>
 			<View testID='to-currency-input'>
 				<Text>To Currency Input</Text>

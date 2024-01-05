@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { DismissKeyboardHOC } from './components/HOC/DismissKeyboard';
-import InternationalPayment from "./screens/internationalPayment";
+import InternationalPayment from "./features/internationalPayment";
 
 export default function App() {
   return (

@@ -16,10 +16,14 @@ export const CurrencyInput = ({ label = 'Currency' }: Props) => {
         </View>
         <View>
           <View testID='currency-flag'>
-            Currency Flag
+            <Text>
+              Currency Flag
+            </Text>
           </View>
           <View testID='currency-code'>
-            Currency Code
+            <Text>
+              Currency Code
+            </Text>
           </View>
         </View>
       </View>

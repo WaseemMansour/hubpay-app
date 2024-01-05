@@ -9,10 +9,10 @@ return (
 
   <View>
     <View testID='from-currency-input'>
-      <CurrencyInput />
+      <CurrencyInput label='You send exactly' />
     </View>
     <View testID='to-currency-input'>
-      <CurrencyInput />
+      <CurrencyInput label='Recipient gets' />
     </View>
     <View testID='conversion-rate-and-fees'>
       <Text>Conversion Rate + Fees</Text>

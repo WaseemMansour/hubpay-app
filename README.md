@@ -16,6 +16,7 @@
 - [ ] Should Show Conversion Rate + Fees
 - [ ] Should Show Processing Disclaimer
 - [ ] Should have " Start Transfer " CTA
+- [ ] Should retrieve exchange rate between base and target currencies
 - [ ] Should update TO Currency Input when FROM Value Change
 - [ ] Should update FROM Currency Input when TO value change.
 

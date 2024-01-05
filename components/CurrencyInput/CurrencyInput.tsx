@@ -1,4 +1,5 @@
-import { Text, TextInput, View } from 'react-native'
+import { Text, View } from 'react-native'
+import { NumberInput } from '../NumberInput/NumberInput'
 
 type Props = {
   label?: string
@@ -29,7 +30,7 @@ export const CurrencyInput = ({ label = 'Currency' }: Props) => {
       </View>
       
       <View>
-        <TextInput placeholder='250,000' value='500,000.00' />
+        <NumberInput />
       </View>
     </View>
   )

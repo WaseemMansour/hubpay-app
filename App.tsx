@@ -1,13 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { DismissKeyboardHOC } from './components/HOC/DismissKeyboard';
 import InternationalPayment from "./screens/internationalPayment";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <InternationalPayment />
-    </View>
+    
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <DismissKeyboardHOC >
+          <InternationalPayment />
+        </DismissKeyboardHOC>
+      </View>
+    
   );
 }
 

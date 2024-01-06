@@ -3,7 +3,7 @@ import { Calculator } from './screens/Calculator/Calculator';
 
 const InternationalPayment = () => {
   return (
-    <View>
+    <View style={{ width: '90%', marginVertical: 0, marginHorizontal: '5%' }}>
       <Calculator />
     </View>
   )

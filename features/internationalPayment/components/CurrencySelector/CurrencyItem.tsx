@@ -21,7 +21,7 @@ export const CurrencyItem = ({ currency }: Props) => (
       <Image source={ currency.image } style={ { height: 20, width: 30, marginTop: 5 } } />
     </View>
     <View testID='currency-code'>
-      <Text style={ { color: '#000', fontWeight: '500' } }>
+      <Text style={ { color: '#fff', fontWeight: '500' } }>
         {currency.code}
       </Text>
     </View>

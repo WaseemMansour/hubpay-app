@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
-import CurrencyInput from 'react-native-currency-input';
+import { FakeCurrencyInput } from 'react-native-currency-input';
 import { CURRENCIES } from '../../../../lib/constants';
 import { CurrencyCode } from '../../../../types';
 import { CurrencyItem } from './CurrencyItem';
 import { CurrencySelectorModal } from './CurrencySelectorModal';
+import { styles } from './styles';
 
 type Props = {
   label?: string,
@@ -36,10 +37,10 @@ export const CurrencySelector = ({
   };
 
   return (
-    <View>
-      <View>
-        <View>
-          <Text testID='currency-input-label'>
+    <View style={styles.container}>
+      <View style={styles.currencyBox}>
+        <View style={ styles.label }>
+          <Text testID='currency-input-label' style={{ color: '#fff'}}>
             {label}
           </Text>
         </View>
@@ -52,7 +53,7 @@ export const CurrencySelector = ({
           {onCurrencyChange
             ? (
 
-              <View testID='currency-selector-modal-trigger' style={{ backgroundColor: 'purple'}}>
+              <View testID='currency-selector-modal-trigger' style={styles.currencyTrigger}>
 
                 <Pressable onPress={ () => {
                   setShowCurrencySelector(true);
@@ -68,9 +69,9 @@ export const CurrencySelector = ({
 
       </View>
       
-      <View>
-        <CurrencyInput
-          style={{ borderWidth: 1, borderStyle: 'solid', borderColor: 'red', padding: 0, paddingHorizontal: 5, height: 30}}
+      <View style={styles.currencyInputWrapper}>
+        <FakeCurrencyInput
+          style={styles.currencyInput}
           value={value}
           onChangeValue={onAmountChange}
           delimiter=","

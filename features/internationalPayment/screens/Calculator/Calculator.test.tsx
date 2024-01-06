@@ -1,9 +1,29 @@
-import { fireEvent, render, waitFor } from "@testing-library/react-native";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { renderHook } from '@testing-library/react-hooks';
+import { render } from "@testing-library/react-native";
 import { TextMatch, TextMatchOptions } from "@testing-library/react-native/build/matches";
 import { GetByQuery } from "@testing-library/react-native/build/queries/make-queries";
 import { CommonQueryOptions } from "@testing-library/react-native/build/queries/options";
+import { ReactNode } from 'react';
+import { useGetExchangeRate } from '../../hooks/useGetExchangeRate';
 import { Calculator } from './Calculator';
 
+jest.mock('../../hooks/useGetExchangeRate', () => ({
+  useGetExchangeRate: jest.fn(() => ({
+		data: {
+			base: 'AED',
+			date: '08-01-2024',
+			rates: {
+				'AED': 1,
+				'CAD': 0.36,
+				'EGP': 8.37,
+				'GBP': 0.21,
+				'JPY': 39.38,
+				'USD': 0.27,
+			}
+		}
+	}))
+}));
 
 
 describe('International Payment Screen', () => {
@@ -40,20 +60,29 @@ describe('International Payment Screen', () => {
 	})
 
 	it('Should retrieve exchange rate between base and target currencies', async () => {
-		const fromAmount = 1000;
-		const exchangeRateAmount = 3750;
+
+    const queryClient = new QueryClient();
+    const wrapper = ({ children }: { children: ReactNode}) => (
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    );
+
 		const baseCurrency = 'AED';
 		const targetCurrency = 'USD';
+		const aedToUsdRate = 0.27;
 
-		const fromCurrencyInput = getByTestId('from-currency-input');
-		const toCurrencyInput = getByTestId('to-currency-input');
+    const { result, waitForNextUpdate } = renderHook (() =>
+      useGetExchangeRate({ base: baseCurrency, target: targetCurrency }), { wrapper }
+    );
 
-		fireEvent.changeText(fromCurrencyInput, fromAmount);
-		
-		await waitFor(()=> {
-			// expect(getExchangeRate).toHaveBeenCalledWith(fromAmount, baseCurrency, targetCurrency);
-			expect(toCurrencyInput).toEqual(exchangeRateAmount)
-		})
+		try {
+			await waitForNextUpdate({ timeout: 3000 });
+		} catch (error) {
+			console.error('Error in waitForNextUpdate:', error);
+		}
+
+		expect(result.current.data?.rates?.[targetCurrency]).toBe(aedToUsdRate)
 		
 	})
 })

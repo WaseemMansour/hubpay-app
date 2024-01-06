@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Text, View } from "react-native";
 import { CurrencyCode } from '../../../../types';
 import { CurrencySelector } from '../../components/CurrencySelector/CurrencySelector';
+import { ProcessingDisclaimer } from '../../components/ProcessingDisclaimer/ProcessingDisclaimer';
 import { useGetExchangeRate } from '../../hooks/useGetExchangeRate';
 
 export const Calculator = () => {
@@ -70,7 +71,7 @@ export const Calculator = () => {
         <Text>Conversion Rate + Fees</Text>
       </View>
       <View testID='processing-disclaimer'>
-        <Text>Processing Disclaimer</Text>
+        <ProcessingDisclaimer base={baseCurrency} target={targetCurrency} />
       </View>
       <View testID='start-transfer-cta'>
         <Button title='Start Transfer' />

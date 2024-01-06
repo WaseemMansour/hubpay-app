@@ -23,8 +23,6 @@
 #### Currency Input Component:
 - [ ] Should Show current Currency Flag and Code
 - [ ] Should Allow custom label
-- [ ] Should accept only positive number.
-- [ ] Should display input numbers formatted.
 - [ ] Should Allow User to change currency if Option is Active
 
 #### Conversion Rate:

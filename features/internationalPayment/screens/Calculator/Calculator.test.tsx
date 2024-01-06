@@ -78,9 +78,7 @@ describe('International Payment Screen', () => {
 
 		try {
 			await waitForNextUpdate({ timeout: 3000 });
-		} catch (error) {
-			console.error('Error in waitForNextUpdate:', error);
-		}
+		} catch (error) {}
 
 		expect(result.current.data?.rates?.[targetCurrency]).toBe(aedToUsdRate)
 		

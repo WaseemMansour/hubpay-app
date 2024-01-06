@@ -18,9 +18,7 @@ export const Calculator = () => {
     if(data && isSuccess) {
       setRate(data?.rates[targetCurrency]!);
     }
-  }, [data, isSuccess])
-  
-	console.log(`Rate for ${baseCurrency} to ${targetCurrency} is : ${rate}`)
+  }, [data, isSuccess, targetCurrency])
 
   const calculateTargetAmountByBase = (baseAmount: number, rate: number) => {
     if(!baseAmount) {
@@ -44,19 +42,24 @@ export const Calculator = () => {
     setBaseAmount(baseAmount);
   };
 
+  useEffect(() => {
+    calculateTargetAmountByBase(baseAmount, rate);
+  }, [rate])
 
 
   return (
     <View>
       <View testID='from-currency-input'>
         <CurrencySelector 
+          defaultCurrencyCode='AED'
           label='You send exactly'
           value={baseAmount} 
-          onAmountChange={(amount) => calculateTargetAmountByBase(amount, rate)} 
+          onAmountChange={(amount) => calculateTargetAmountByBase(amount, rate)}
         />
       </View>
       <View testID='to-currency-input'>
         <CurrencySelector 
+          defaultCurrencyCode='EGP'
           label='Recipient gets'
           value={targetAmount}
           onAmountChange={(amount) => calculateBaseAmountByTarget(amount, rate)} 

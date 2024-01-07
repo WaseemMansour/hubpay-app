@@ -1,10 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Button } from '../../../../components/Button/Button';
 import { CurrencyCode } from '../../../../types';
 import { CurrencySelector } from '../../components/CurrencySelector/CurrencySelector';
 import { ProcessingDisclaimer } from '../../components/ProcessingDisclaimer/ProcessingDisclaimer';
+import { RateAndFees } from '../../components/RateAndFees/RateAndFees';
 import { useGetExchangeRate } from '../../hooks/useGetExchangeRate';
 
 export const Calculator = () => {
@@ -59,6 +60,9 @@ export const Calculator = () => {
           onAmountChange={(amount) => calculateTargetAmountByBase(amount, rate)}
         />
       </View>
+      <View testID='conversion-rate-and-fees'>
+        <RateAndFees base={baseCurrency} target={targetCurrency} rate={rate} />
+      </View>
       <View testID='to-currency-input'>
         <CurrencySelector 
           defaultCurrencyCode='EGP'
@@ -68,9 +72,7 @@ export const Calculator = () => {
           onCurrencyChange={setTargetCurrency} 
         />
       </View>
-      <View testID='conversion-rate-and-fees'>
-        <Text>Conversion Rate + Fees</Text>
-      </View>
+      
       <View testID='processing-disclaimer'>
         <ProcessingDisclaimer base={baseCurrency} target={targetCurrency} />
       </View>

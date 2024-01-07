@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { DismissKeyboardHOC } from './components/HOC/DismissKeyboard';
+import { HubpayLogo } from './components/HubpayLogo/HubpayLogo';
 import InternationalPayment from "./features/internationalPayment";
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
       <View style={styles.container}>
         <StatusBar style="auto" />
         <DismissKeyboardHOC >
+          <HubpayLogo />
           <InternationalPayment />
         </DismissKeyboardHOC>
       </View>

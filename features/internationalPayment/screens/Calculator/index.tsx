@@ -14,15 +14,8 @@ export const RateCalculator = () => {
   const [targetCurrency, setTargetCurrency] = useState<CurrencyCode>('EGP');
   const [baseAmount, setBaseAmount] = useState<number>(0);
   const [targetAmount, setTargetAmount] = useState<number>(0);
-  const [rate, setRate] = useState<number>(1);
 
-  const { data, isSuccess } =  useGetExchangeRate({ base: baseCurrency, target: targetCurrency })
-
-  useEffect(() => {
-    if(data && isSuccess) {
-      setRate(data?.rates[targetCurrency]!);
-    }
-  }, [data, isSuccess, targetCurrency])
+  const { rate } =  useGetExchangeRate({ base: baseCurrency, target: targetCurrency })
 
   const reset = () => {
     setBaseAmount(0);

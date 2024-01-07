@@ -12,14 +12,16 @@ const useGetExchangeRate = ({ base, target }: Props) => {
     data, isFetching, error, isSuccess, isError,
   } = useQuery({
     queryKey: [`${base}-${target}-exchange-rate`],
-    queryFn: () =>
-    internationalPaymentApi.getExchangeRate(base, target),
+    queryFn: async () => {
+      const res = await internationalPaymentApi.getExchangeRate(base, target)
+      return res?.rates?.[target]
+    },
     enabled: !!base && !!target,
     retry: 0,
   });
 
   return {
-    data,
+    rate: data ?? 1,
     isFetching,
     isSuccess,
     error,

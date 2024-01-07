@@ -1,18 +1,17 @@
 
 import React, { useEffect, useState } from 'react';
-import { Image, Text, View } from "react-native";
+import { View } from "react-native";
 import { Button } from '../../../../components/Button/Button';
-import { Modal } from '../../../../components/Modal/Modal';
 import { calculateBaseAmountByTarget, calculateTargetAmountByBase } from '../../../../lib/calculateRate';
 import { CurrencyCode } from '../../../../types';
 import { CurrencySelector } from '../../components/CurrencySelector/CurrencySelector';
 import { ProcessingDisclaimer } from '../../components/ProcessingDisclaimer/ProcessingDisclaimer';
 import { RateAndFees } from '../../components/RateAndFees/RateAndFees';
 import { useGetExchangeRate } from '../../hooks/useGetExchangeRate';
-import { styles } from './styles';
+import { TransferInitiated } from '../TransferInitiated/TransferInitiated';
 
 export const Calculator = () => {
-  const [transferModalVisible, setTransferModalVisible] = useState<boolean>(false);
+  const [isTransferModalVisible, setTransferModalVisible] = useState<boolean>(false);
   const [baseCurrency] = useState<CurrencyCode>('AED');
   const [targetCurrency, setTargetCurrency] = useState<CurrencyCode>('EGP');
   const [baseAmount, setBaseAmount] = useState<number>(0);
@@ -87,20 +86,13 @@ export const Calculator = () => {
       <View testID='start-transfer-cta'>
         <Button title='Start transfer' disabled={!canTransfer} onPress={() => canTransfer && setTransferModalVisible(true)} />
       </View>
-      <Modal
-        title='Transfer Initiated'
+      <TransferInitiated
+        isTransferModalVisible={isTransferModalVisible}
         onClose={() => {
           reset();
           setTransferModalVisible(false)
         }}
-        isVisible={transferModalVisible}
-      >
-        <View style={styles.transferScreenImage}>
-          <Image source={require('../../../../assets/currency-exchange.png')} />
-        </View>
-        <Text style={styles.transferScreenContent}>We've initiated payment transfer process.</Text>
-        <Text style={styles.transferScreenContent}>Transaction status will be updated soon.</Text>
-      </Modal>
+      />
     </View>
   )
 };

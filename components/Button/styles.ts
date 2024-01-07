@@ -4,9 +4,9 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
+    paddingVertical: 20,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 10,
     elevation: 3,
     backgroundColor: 'black',
   },

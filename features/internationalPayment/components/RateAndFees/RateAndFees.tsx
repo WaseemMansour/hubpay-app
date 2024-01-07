@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { CurrencyCode } from '../../../../types';
 import { DottedLineDots } from './DottedLineDots';
 import { styles } from './styles';
@@ -22,8 +22,9 @@ export const RateAndFees = ({ base, target, rate }: Props) => {
           </Text>
         </View>
 
-        <View>
+        <View style={styles.feesWrapper}>
           <Text style={styles.fees}>Fees</Text>
+          <Image source={require('../assets/down-arrow-dark.png')} style={styles.feesArrow} />
         </View>
       </View>
     </View>

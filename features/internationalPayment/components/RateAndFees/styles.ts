@@ -54,9 +54,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700'
   },
+  feesWrapper: {
+    flexDirection: 'row'
+  },
   fees: {
     color: theme.colors.primaryColor,
-    fontWeight: '600'
+    fontWeight: '600',
+    marginRight: 5
+  },
+  feesArrow: {
+    width: 16, 
+    height: 16, 
+    marginTop: 2
   }
 })
 

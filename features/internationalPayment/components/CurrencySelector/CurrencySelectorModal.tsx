@@ -1,5 +1,6 @@
 import React from "react";
-import { FlatList, Modal, Pressable, Text, View } from "react-native";
+import { FlatList, Pressable, View } from "react-native";
+import { Modal } from '../../../../components/Modal/Modal';
 import { CURRENCIES } from "../../../../lib/constants";
 import { CurrencyCode } from "../../../../types";
 import { CurrencyItem } from "./CurrencyItem";
@@ -23,41 +24,26 @@ export const CurrencySelectorModal = ({
   );
   return (
     <Modal
-      style={styles.currencyModal}
-      visible={isVisible}
-      animationType="slide"
+      title='Select currency'
+      onClose={onClose}
+      isVisible={isVisible}
     >
-      <View style={styles.modalContainer}>
-        <View style={styles.modalInner}>
-          <View style={styles.modalHeader}>
-            <Text style={styles.modalHeaderTitle}>
-              Select currency
-            </Text>
-            <View>
-              <Pressable onPress={onClose}>
-                <Text style={{ color: "#fff" }}>Cancel</Text>
-              </Pressable>
-            </View>
-          </View>
-
-          <FlatList
-            data={filteredCountries}
-            renderItem={(itemData) => (
-              <View>
-                <Pressable
-                  onPress={() => {
-                    setTimeout(() => onChange(itemData.item.code), 300);
-                  }}
-                >
-                  <View style={styles.currencyItemWrapper}>
-                    <CurrencyItem currency={itemData.item} />
-                  </View>
-                </Pressable>
+      <FlatList
+        data={filteredCountries}
+        renderItem={(itemData) => (
+          <View>
+            <Pressable
+              onPress={() => {
+                setTimeout(() => onChange(itemData.item.code), 300);
+              }}
+            >
+              <View style={styles.currencyItemWrapper}>
+                <CurrencyItem currency={itemData.item} />
               </View>
-            )}
-          />
-        </View>
-      </View>
+            </Pressable>
+          </View>
+        )}
+      />
     </Modal>
   );
 };

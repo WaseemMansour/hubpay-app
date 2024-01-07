@@ -2,6 +2,10 @@
 ### Description
 - An International Payment Transfer App - Calculator Screen -
 - User can change amount inputs, From or To Currency and instantly see the respective exchange rate updated.
+- When user change target currency it update the rate and calculage Target amount based on Base amount.
+- Start transfer is disabled if no amounts exists.
+- User see Transfer Inititated Screen on click " Start transfer ".
+
 - Utilizing mocked API response.
 - Built with TypeScript and Expo.
 - Unit/Integration tests written in TDD.

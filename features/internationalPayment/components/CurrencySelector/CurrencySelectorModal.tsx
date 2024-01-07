@@ -1,89 +1,63 @@
-import React from 'react';
-import {
-  FlatList, Modal, Pressable, Text, View
-} from 'react-native';
-import { CURRENCIES } from '../../../../lib/constants';
-import { CurrencyCode } from '../../../../types';
-import { CurrencyItem } from './CurrencyItem';
-
+import React from "react";
+import { FlatList, Modal, Pressable, Text, View } from "react-native";
+import { CURRENCIES } from "../../../../lib/constants";
+import { CurrencyCode } from "../../../../types";
+import { CurrencyItem } from "./CurrencyItem";
+import { styles } from "./styles";
 
 type Props = {
-  baseCurrencyCode: CurrencyCode,
-  isVisible: boolean,
-  onChange: (currency: CurrencyCode) => void,
-  onClose: () => void,
+  baseCurrencyCode: CurrencyCode;
+  isVisible: boolean;
+  onChange: (currency: CurrencyCode) => void;
+  onClose: () => void;
 };
 
 export const CurrencySelectorModal = ({
-  baseCurrencyCode, isVisible, onChange, onClose,
+  baseCurrencyCode,
+  isVisible,
+  onChange,
+  onClose,
 }: Props) => {
-  const filteredCountries = CURRENCIES.filter((currency) => currency.code !== baseCurrencyCode);
+  const filteredCountries = CURRENCIES.filter(
+    (currency) => currency.code !== baseCurrencyCode
+  );
   return (
-
     <Modal
-      style={ {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 22,
-      } }
-      visible={ isVisible }
-      animationType='slide'
+      style={styles.currencyModal}
+      visible={isVisible}
+      animationType="slide"
     >
-      <View style={ {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        padding: 20,
-        paddingTop: 100,
-      } }
-      >
-        <View style={ { flex: 1, width: '100%' } }>
-          <View style={ { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' } }>
+      <View style={styles.modalContainer}>
+        <View style={styles.modalInner}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalHeaderTitle}>
+              Select currency
+            </Text>
             <View>
-              <Text style={ {
-                color: '#fff', textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginTop: 10, marginBottom: 20,
-              } }
-              >
-                Select currency
-              </Text>
-            </View>
-            <View>
-              <Pressable onPress={ onClose }>
-                <Text style={ { color: '#fff' } }>Cancel</Text>
+              <Pressable onPress={onClose}>
+                <Text style={{ color: "#fff" }}>Cancel</Text>
               </Pressable>
-
             </View>
           </View>
 
           <FlatList
-            data={ filteredCountries }
-            renderItem={ (itemData) => (
-
+            data={filteredCountries}
+            renderItem={(itemData) => (
               <View>
                 <Pressable
-                  onPress={ () => {
+                  onPress={() => {
                     setTimeout(() => onChange(itemData.item.code), 300);
-                  } }
+                  }}
                 >
-                  <View
-                    style={ {
-                      padding: 5,
-                      paddingRight: 10,
-                      paddingLeft: 10,
-                    } }
-                  >
-                    <CurrencyItem currency={ itemData.item } />
+                  <View style={styles.currencyItemWrapper}>
+                    <CurrencyItem currency={itemData.item} />
                   </View>
-
                 </Pressable>
               </View>
-
-            ) }
+            )}
           />
         </View>
       </View>
     </Modal>
-
   );
 };

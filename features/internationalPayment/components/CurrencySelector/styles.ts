@@ -55,6 +55,45 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
+  currencyModal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    padding: 20,
+    paddingTop: 100,
+    backgroundColor: theme.colors.primaryColor
+  },
+  modalInner: {
+    flex: 1, width: '100%'
+  },
+  modalHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  modalHeaderTitle: {
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  currencyItemWrapper: {
+    padding: 5,
+    paddingRight: 10,
+    paddingLeft: 10,
+    borderColor: theme.colors.secondaryColor,
+    borderStyle: "solid",
+    borderWidth: 1,
+    marginBottom: 10,
+  }
 });
 
 export { styles };

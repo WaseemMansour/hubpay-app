@@ -5,8 +5,8 @@ import { TextMatch, TextMatchOptions } from "@testing-library/react-native/build
 import { GetByQuery } from "@testing-library/react-native/build/queries/make-queries";
 import { CommonQueryOptions } from "@testing-library/react-native/build/queries/options";
 import { ReactNode } from 'react';
+import { RateCalculator } from '.';
 import { useGetExchangeRate } from '../../hooks/useGetExchangeRate';
-import { Calculator } from './Calculator';
 
 jest.mock('../../hooks/useGetExchangeRate', () => ({
   useGetExchangeRate: jest.fn(() => ({
@@ -36,7 +36,7 @@ describe('International Payment Screen', () => {
 	
 	let getByTestId: GetByQuery<TextMatch, CommonQueryOptions & TextMatchOptions>;
 	beforeEach(() => {
-		const utils = render(<Calculator/>);
+		const utils = render(<RateCalculator/>);
 		getByTestId = utils.getByTestId;
 	});
 	

@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
-import { Button, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { Button } from '../../../../components/Button/Button';
 import { CurrencyCode } from '../../../../types';
 import { CurrencySelector } from '../../components/CurrencySelector/CurrencySelector';
 import { ProcessingDisclaimer } from '../../components/ProcessingDisclaimer/ProcessingDisclaimer';
@@ -74,7 +75,7 @@ export const Calculator = () => {
         <ProcessingDisclaimer base={baseCurrency} target={targetCurrency} />
       </View>
       <View testID='start-transfer-cta'>
-        <Button title='Start Transfer' />
+        <Button title='Start transfer' onPress={() => console.log('Transfer initiated')} />
       </View>
     </View>
   )

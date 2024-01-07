@@ -25,6 +25,12 @@ jest.mock('../../hooks/useGetExchangeRate', () => ({
 	}))
 }));
 
+jest.mock('../../hooks/useGetProcessingTime', () => ({
+  useGetProcessingTime: jest.fn(() => ({
+		data: '2 Hours'
+	}))
+}));
+
 
 describe('International Payment Screen', () => {
 	

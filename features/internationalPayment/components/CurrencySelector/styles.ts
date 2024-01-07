@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
     position: 'relative'
   },
   currencyBox: {
-    backgroundColor: theme.colors.primaryColor, 
-    width: '40%', 
+    backgroundColor: theme.colors.primaryColor,
+    width: '40%',
     padding: 10,
-    paddingHorizontal: 15, 
+    paddingHorizontal: 15,
     borderRadius: 10,
     position: 'relative',
   },
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   currencyInput: {
-    paddingTop: 5, 
-    paddingHorizontal: 5, 
+    paddingTop: 5,
+    paddingHorizontal: 5,
     height: 50,
     lineHeight: 36,
     textAlign: 'right',
@@ -36,14 +36,14 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     width: '90%'
   },
-  label: { 
-    color: '#fff', 
+  label: {
+    color: '#fff',
     marginBottom: 5,
   },
   currencyTriggerWrapper: {
-    flexDirection: 'row', 
-    justifyContent: 'flex-start', 
-    alignItems: 'center', 
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     position: 'relative',
   },
   currencyTrigger: {
@@ -93,6 +93,25 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     marginBottom: 10,
+  },
+  currencyItemContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  currencyFlag: {
+    width: 30,
+    height: 30,
+    marginRight: 10
+  },
+  currencyFlagImage: {
+    height: 20,
+    width: 30,
+    marginTop: 5
+  },
+  currencyCode: {
+    color: '#fff',
+    fontWeight: '500'
   }
 });
 

@@ -3,25 +3,22 @@ import {
   Image, Text, View
 } from 'react-native';
 import { Currency } from '../../../../types';
+import {styles} from "./styles";
 
 type Props = {
   currency: Currency
 };
 
 export const CurrencyItem = ({ currency }: Props) => (
-  <View 
+  <View
     testID={`currency-item-${currency.code}`}
-    style={ {
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-    } }
+    style={ styles.currencyItemContainer}
   >
-    <View testID='currency-flag' style={ { width: 30, height: 30, marginRight: 10 } }>
-      <Image source={ currency.image } style={ { height: 20, width: 30, marginTop: 5 } } />
+    <View testID='currency-flag' style={styles.currencyFlag}>
+      <Image source={ currency.image } style={styles.currencyFlagImage} />
     </View>
     <View testID='currency-code'>
-      <Text style={ { color: '#fff', fontWeight: '500' } }>
+      <Text style={styles.currencyCode}>
         {currency.code}
       </Text>
     </View>

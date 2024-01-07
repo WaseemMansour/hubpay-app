@@ -18,7 +18,7 @@ export const ProcessingDisclaimer = ({ base, target }: Props) => {
       style={ {
         justifyContent: 'flex-start',
         alignItems: 'center',
-        marginVertical: 20,
+        marginVertical: 40,
       } }
     >
       {isFetching 

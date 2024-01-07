@@ -10,12 +10,6 @@ type Currency = {
   countryCode: string,
 };
 
-type Country = {
-  name: string,
-  code: string,
-  currency: Currency;
-};
-
 type Rates = {
   [key in CurrencyCode]?: number;
 };
@@ -27,5 +21,5 @@ type ExchangeRate = {
 };
 
 export {
-  Country, Currency, CurrencyCode, ExchangeRate
+  Currency, CurrencyCode, ExchangeRate
 };

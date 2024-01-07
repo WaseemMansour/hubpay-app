@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import { View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { Button } from '../../../../components/Button/Button';
+import { Modal } from '../../../../components/Modal/Modal';
 import { CurrencyCode } from '../../../../types';
 import { CurrencySelector } from '../../components/CurrencySelector/CurrencySelector';
 import { ProcessingDisclaimer } from '../../components/ProcessingDisclaimer/ProcessingDisclaimer';
@@ -9,6 +10,7 @@ import { RateAndFees } from '../../components/RateAndFees/RateAndFees';
 import { useGetExchangeRate } from '../../hooks/useGetExchangeRate';
 
 export const Calculator = () => {
+  const [transferModalVisible, setTransferModalVisible] = useState<boolean>(false);
   const [baseCurrency] = useState<CurrencyCode>('AED');
   const [targetCurrency, setTargetCurrency] = useState<CurrencyCode>('EGP');
   const [baseAmount, setBaseAmount] = useState<number>(0);
@@ -49,6 +51,7 @@ export const Calculator = () => {
     calculateTargetAmountByBase(baseAmount, rate);
   }, [rate])
 
+  const canTransfer =  baseAmount && targetAmount;
 
   return (
     <View>
@@ -77,8 +80,23 @@ export const Calculator = () => {
         <ProcessingDisclaimer base={baseCurrency} target={targetCurrency} />
       </View>
       <View testID='start-transfer-cta'>
-        <Button title='Start transfer' onPress={() => console.log('Transfer initiated')} />
+        <Button title='Start transfer' disabled={!canTransfer} onPress={() => canTransfer && setTransferModalVisible(true)} />
       </View>
+      <Modal
+        title='Transfer Initiated'
+        onClose={() => {
+          setBaseAmount(0);
+          setTargetAmount(0);
+          setTransferModalVisible(false)
+        }}
+        isVisible={transferModalVisible}
+      >
+        <View style={{ alignItems: 'center', marginTop: 40, marginBottom: 60}}>
+          <Image source={require('../../../../assets/currency-exchange.png')} />
+        </View>
+        <Text style={{color: '#fff', lineHeight: 25, textAlign: 'center'}}>We've initiated payment transfer process.</Text>
+        <Text style={{color: '#fff', lineHeight: 25, textAlign: 'center'}}>Transaction status will be updated soon.</Text>
+      </Modal>
     </View>
   )
 }

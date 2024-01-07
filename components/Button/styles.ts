@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: 'black',
   },
+  buttonDisabled: {
+    backgroundColor: 'grey'
+  },
   text: {
     fontSize: 16,
     lineHeight: 21,

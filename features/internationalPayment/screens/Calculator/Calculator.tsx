@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from "react-native";
 import { Button } from '../../../../components/Button/Button';
 import { Modal } from '../../../../components/Modal/Modal';
+import { calculateBaseAmountByTarget, calculateTargetAmountByBase } from '../../../../lib/calculateRate';
 import { CurrencyCode } from '../../../../types';
 import { CurrencySelector } from '../../components/CurrencySelector/CurrencySelector';
 import { ProcessingDisclaimer } from '../../components/ProcessingDisclaimer/ProcessingDisclaimer';
 import { RateAndFees } from '../../components/RateAndFees/RateAndFees';
 import { useGetExchangeRate } from '../../hooks/useGetExchangeRate';
+import { styles } from './styles';
 
 export const Calculator = () => {
   const [transferModalVisible, setTransferModalVisible] = useState<boolean>(false);
@@ -25,30 +27,33 @@ export const Calculator = () => {
     }
   }, [data, isSuccess, targetCurrency])
 
-  const calculateTargetAmountByBase = (baseAmount: number, rate: number) => {
+  const reset = () => {
+    setBaseAmount(0);
+    setTargetAmount(0);
+  }
+
+  const handleCalculateTargetByBase = (baseAmount: number, rate: number) => {
     if(!baseAmount) {
-      setBaseAmount(0)
-      setTargetAmount(0)
+      reset();
       return;
     };
     setBaseAmount(baseAmount);
-    const targetAmount = (baseAmount * rate);
+    const targetAmount = calculateTargetAmountByBase(baseAmount, rate);
     setTargetAmount(targetAmount);
   };
 
-  const calculateBaseAmountByTarget = (targetAmount: number, rate: number) => {
+  const handleCalculateBaseByTarget = (targetAmount: number, rate: number) => {
     if(!targetAmount) {
-      setBaseAmount(0)
-      setTargetAmount(0)
+      reset();
       return;
     }
     setTargetAmount(targetAmount);
-    const baseAmount =  (targetAmount / rate);
+    const baseAmount =  calculateBaseAmountByTarget(targetAmount, rate);
     setBaseAmount(baseAmount);
   };
 
   useEffect(() => {
-    calculateTargetAmountByBase(baseAmount, rate);
+    handleCalculateTargetByBase(baseAmount, rate);
   }, [rate])
 
   const canTransfer =  baseAmount && targetAmount;
@@ -60,7 +65,7 @@ export const Calculator = () => {
           defaultCurrencyCode='AED'
           label='You send exactly'
           value={baseAmount} 
-          onAmountChange={(amount) => calculateTargetAmountByBase(amount, rate)}
+          onAmountChange={(amount) => handleCalculateTargetByBase(amount, rate)}
         />
       </View>
       <View testID='conversion-rate-and-fees'>
@@ -71,7 +76,7 @@ export const Calculator = () => {
           defaultCurrencyCode='EGP'
           label='Recipient gets'
           value={targetAmount}
-          onAmountChange={(amount) => calculateBaseAmountByTarget(amount, rate)} 
+          onAmountChange={(amount) => handleCalculateBaseByTarget(amount, rate)} 
           onCurrencyChange={setTargetCurrency} 
         />
       </View>
@@ -85,20 +90,17 @@ export const Calculator = () => {
       <Modal
         title='Transfer Initiated'
         onClose={() => {
-          setBaseAmount(0);
-          setTargetAmount(0);
+          reset();
           setTransferModalVisible(false)
         }}
         isVisible={transferModalVisible}
       >
-        <View style={{ alignItems: 'center', marginTop: 40, marginBottom: 60}}>
+        <View style={styles.transferScreenImage}>
           <Image source={require('../../../../assets/currency-exchange.png')} />
         </View>
-        <Text style={{color: '#fff', lineHeight: 25, textAlign: 'center'}}>We've initiated payment transfer process.</Text>
-        <Text style={{color: '#fff', lineHeight: 25, textAlign: 'center'}}>Transaction status will be updated soon.</Text>
+        <Text style={styles.transferScreenContent}>We've initiated payment transfer process.</Text>
+        <Text style={styles.transferScreenContent}>Transaction status will be updated soon.</Text>
       </Modal>
     </View>
   )
-}
-
-
+};

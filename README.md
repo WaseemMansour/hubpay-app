@@ -11,23 +11,23 @@
 ---
 ### Tests List
 #### Calculator Screen:
-- [ ] Should have FROM Currency Input
-- [ ] Should have TO currency Input
-- [ ] Should Show Conversion Rate + Fees
-- [ ] Should Show Processing Disclaimer
-- [ ] Should have " Start Transfer " CTA
-- [ ] Should retrieve exchange rate between base and target currencies
-- [ ] Should update TO Currency Input when FROM Value Change
-- [ ] Should update FROM Currency Input when TO value change.
+- [x] Should have FROM Currency Input
+- [x] Should have TO currency Input
+- [x] Should Show Conversion Rate + Fees
+- [x] Should Show Processing Disclaimer
+- [x] Should have " Start Transfer " CTA
+- [x] Should retrieve exchange rate between base and target currencies
+- [x] Should update TO Currency Input when FROM Value Change
+- [x] Should update FROM Currency Input when TO value change.
 
 #### Currency Input Component:
-- [ ] Should Show current Currency Flag and Code
-- [ ] Should Allow custom label
-- [ ] Should Allow User to change currency if Option is Active
+- [x] Should Show current Currency Flag and Code
+- [x] Should Allow custom label
+- [x] Should Allow User to change currency if Option is Active
 
 #### Conversion Rate:
-- [ ] Show Rate between From & To Currencies
-- [ ] Show Fees Info on Toggle
+- [x] Show Rate between From & To Currencies
+- [ ] Show Fees Info on Toggle - to be enabled after content clarification -
 
 #### Start Transfer:
-- [ ] Show Success Message
+- [x] Show Success Message
